@@ -3,7 +3,7 @@ import styles from './ToDo.module.css';
 import MyButton from '../../ui/my-btn/MyButton';
 
 const ToDo = ({ todo, onDelete }) => {
-  const { id, title, type, descripion } = todo;
+  const { id, title, type, description } = todo;
 
   return (
     <div className={styles.todo}>
@@ -11,7 +11,7 @@ const ToDo = ({ todo, onDelete }) => {
       <label for={id}>
         <p>{title}</p>
         <p>{type}</p>
-        <p>{descripion}</p>
+        <p>{description}</p>
       </label>
       <div className={styles.btns}>
         <MyButton name={'Change'} />
