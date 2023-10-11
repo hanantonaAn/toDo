@@ -1,0 +1,17 @@
+:root {
+    --pink-color: rgb(255, 161, 245);
+    --purple-color: rgb(188, 122, 249);
+    --yellow-color: rgb(248, 255, 149);
+    --green-color: rgb(166, 255, 150);
+    --text-color: rgb(102, 20, 178);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color)
+}
+
+.wrapper {
+    margin: 0 45px;
+}

@@ -1,0 +1,23 @@
+.header {
+    background-color: var(--pink-color);
+    margin-bottom: 45px;
+}
+
+.about {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
+    filter: invert(12%) sepia(78%) saturate(6771%) hue-rotate(273deg) brightness(72%) contrast(98%);
+}

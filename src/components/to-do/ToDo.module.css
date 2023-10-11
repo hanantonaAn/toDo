@@ -1,0 +1,22 @@
+.todo {
+    padding: 15px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--yellow-color);
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.todo:hover {
+    background-color: rgb(248, 255, 149, 0.75);
+}
+
+.todo input {
+    margin-right: 20px;
+}
+
+.btns {
+    display: grid;
+}
