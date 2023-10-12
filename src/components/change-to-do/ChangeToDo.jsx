@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import styles from './NewToDo.module.css';
+import React, { useEffect, useState } from 'react';
+import styles from '../new-to-do/NewToDo.module.css';
 import MyButton from '../../ui/my-btn/MyButton';
 import Modal from '@mui/material/Modal';
 import MyInput from '../../ui/my-input/MyInput';
 
-const clearData = {
-  id: '',
-  title: '',
-  type: '',
-  description: '',
-};
+const ChangeToDo = ({ todo, open, handleCloseModal, change }) => {
+  const [input, setInput] = useState({});
+  const { id, title, type, description } = input;
 
-const NewToDo = ({ open, handleCloseModal, close, add }) => {
-  const [input, setInput] = useState(clearData);
-  const { title, type, description } = input;
+  useEffect(() => {
+    setInput(todo);
+  }, [todo]);
 
   const changeInput = (e) => {
     setInput((prev) => ({
@@ -22,19 +19,16 @@ const NewToDo = ({ open, handleCloseModal, close, add }) => {
     }));
   };
 
-  const clear = () => setInput(clearData);
-
-  const addToDo = () => {
-    add(title, type, description);
+  const changeToDo = () => {
+    change(id, title, type, description);
     handleCloseModal();
-    clear();
   };
 
   return (
     <div>
-      <Modal open={open} onClose={close}>
+      <Modal open={open} onClose={handleCloseModal}>
         <div className={styles.modal}>
-          <h1 style={{ marginBottom: '15px' }}>Enter data</h1>
+          <h1 style={{ marginBottom: '15px' }}>Change data</h1>
           <MyInput
             name={'title'}
             placeholder={'Title'}
@@ -55,11 +49,10 @@ const NewToDo = ({ open, handleCloseModal, close, add }) => {
           />
           <div className={styles.btns}>
             <MyButton name={'Exit'} onClick={handleCloseModal} />
-            <MyButton name={'Clear'} onClick={clear} />
             {title != '' && type != '' && description != 0 ? (
-              <MyButton name={'Add'} onClick={() => addToDo()} />
+              <MyButton name={'Add'} onClick={() => changeToDo()} />
             ) : (
-              <p style={{ color: 'var(--purple-color)' }}>Fill inputs</p>
+              <p style={{ color: 'var(--purple-color)' }}>Null input!</p>
             )}
           </div>
         </div>
@@ -68,4 +61,4 @@ const NewToDo = ({ open, handleCloseModal, close, add }) => {
   );
 };
 
-export default NewToDo;
+export default ChangeToDo;
