@@ -5,46 +5,10 @@ import MyButton from '../../ui/my-btn/MyButton';
 import NewToDo from '../new-to-do/NewToDo';
 import useModal from '../hooks/useModal';
 import ChangeToDo from '../change-to-do/ChangeToDo';
+import useLocalStorage from 'use-local-storage';
 
 const ToDoAll = () => {
-  const [list, setList] = useState([
-    {
-      id: 0,
-      title: 'Do homework',
-      type: 'Basic',
-      description: 'English, p12 ex1',
-    },
-    {
-      id: 1,
-      title: 'Do house work',
-      type: 'Home',
-      description: 'Dishes',
-    },
-    {
-      id: 2,
-      title: 'House',
-      type: 'House',
-      description: 'Clean windows',
-    },
-    {
-      id: 3,
-      title: 'Work',
-      type: 'Bissnes',
-      description: 'Send email',
-    },
-    {
-      id: 4,
-      title: 'Do homework',
-      type: 'Basic',
-      description: 'English, p12 ex1',
-    },
-    {
-      id: 5,
-      title: 'Do workout',
-      type: 'Body',
-      description: 'Tabata',
-    },
-  ]);
+  const [list, setList] = useLocalStorage('list', '');
   const { open, changeModal } = useModal();
   const clickDelete = (id) => {
     setList((list) => list.filter((i) => i.id !== id));
@@ -53,12 +17,11 @@ const ToDoAll = () => {
   const add = (title, type, description) => {
     setList((prev) => [
       ...prev,
-      { id: prev.length + 1, title, type, description },
+      { id: prev.length + 1, isDone: false, title, type, description },
     ]);
   };
 
   const change = (todo) => {
-    console.log(todo);
     const { id, title, type, description } = todo;
     setList(
       list.map((item) =>
@@ -68,6 +31,14 @@ const ToDoAll = () => {
       )
     );
   };
+
+  const makeDone = (todo) => {
+    const { id, isDone } = todo;
+    setList(
+      list.map((item) => (item.id == id ? { ...item, isDone: !isDone } : item))
+    );
+  };
+
   const {
     open: openEdit,
     changeModal: changeModalEdit,
@@ -100,6 +71,7 @@ const ToDoAll = () => {
               todo={todo}
               change={() => handleOpenChangeModal(todo)}
               onDelete={() => clickDelete(todo.id)}
+              makeDone={() => makeDone(todo)}
             />
           );
         })

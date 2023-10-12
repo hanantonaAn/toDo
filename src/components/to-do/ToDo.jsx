@@ -2,12 +2,18 @@ import React from 'react';
 import styles from './ToDo.module.css';
 import MyButton from '../../ui/my-btn/MyButton';
 
-const ToDo = ({ todo, onDelete, change }) => {
-  const { id, title, type, description } = todo;
+const ToDo = ({ todo, onDelete, change, makeDone }) => {
+  const { id, title, type, description, isDone } = todo;
 
   return (
     <div className={styles.todo}>
-      <input type="checkbox" id={id} name={id} />
+      <input
+        type="checkbox"
+        id={id}
+        name={id}
+        checked={isDone}
+        onChange={makeDone}
+      />
       <label htmlFor={id}>
         <p>{title}</p>
         <p>{type}</p>
