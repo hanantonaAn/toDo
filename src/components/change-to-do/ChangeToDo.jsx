@@ -5,7 +5,12 @@ import Modal from '@mui/material/Modal';
 import MyInput from '../../ui/my-input/MyInput';
 
 const ChangeToDo = ({ todo, open, handleCloseModal, change }) => {
-  const [input, setInput] = useState({});
+  const [input, setInput] = useState({
+    id: '',
+    title: '',
+    type: '',
+    description: '',
+  });
   const { id, title, type, description } = input;
 
   useEffect(() => {
@@ -20,7 +25,7 @@ const ChangeToDo = ({ todo, open, handleCloseModal, change }) => {
   };
 
   const changeToDo = () => {
-    change(id, title, type, description);
+    change(input);
     handleCloseModal();
   };
 

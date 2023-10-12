@@ -8,7 +8,7 @@ const ToDo = ({ todo, onDelete, change }) => {
   return (
     <div className={styles.todo}>
       <input type="checkbox" id={id} name={id} />
-      <label for={id}>
+      <label htmlFor={id}>
         <p>{title}</p>
         <p>{type}</p>
         <p>{description}</p>

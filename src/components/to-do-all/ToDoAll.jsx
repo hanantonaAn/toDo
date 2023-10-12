@@ -55,10 +55,10 @@ const ToDoAll = () => {
       ...prev,
       { id: prev.length + 1, title, type, description },
     ]);
-    changeModal;
   };
 
   const change = (todo) => {
+    console.log(todo);
     const { id, title, type, description } = todo;
     setList(
       list.map((item) =>
@@ -67,7 +67,6 @@ const ToDoAll = () => {
           : item
       )
     );
-    changeModal;
   };
   const {
     open: openEdit,
