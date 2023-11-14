@@ -10,7 +10,7 @@ function App() {
     <div>
       <Header />
       <div className="wrapper">
-        Hi
+        Hello
         <ToDoAll />
       </div>
     </div>
